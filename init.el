@@ -136,3 +136,27 @@
     :server-id 'asm-lsp)))
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+;; (require 'syzlang-mode) 
+;; syzlang mode is my yet unfinished and unpublished attempt to bring syzlang syntax highlighting to emacs
+(require 'org-static-blog)
+
+(setq org-static-blog-root-dir "~/org-blog/")
+
+(setq org-static-blog-publish-title "forestfoxx's Org Static Blog")
+(setq org-static-blog-publish-url (format "https://forestfoxx.github.io/"))
+(setq org-static-blog-publish-directory (format "%s" org-static-blog-root-dir))
+(setq org-static-blog-posts-directory (format "%sorg" org-static-blog-root-dir))
+(setq org-static-blog-drafts-directory (format "%sdrafts" org-static-blog-root-dir))
+(setq org-static-blog-page-header (with-temp-buffer
+  (insert-file-contents (format "%sstatic/header.html" org-static-blog-root-dir))
+  (buffer-string)))
+(setq org-static-blog-page-preamble (with-temp-buffer
+  (insert-file-contents (format "%sstatic/preamble.html" org-static-blog-root-dir))
+  (buffer-string)))
+(setq org-static-blog-page-postamble (with-temp-buffer
+  (insert-file-contents (format "%sstatic/postamble.html" org-static-blog-root-dir))
+  (buffer-string)))
+(setq org-static-blog-enable-tags t)
+(setq org-static-blog-use-preview t)
+(setq org-static-blog-index-front-matter
+      "<h1 class=title> Recent Posts </h1>")
